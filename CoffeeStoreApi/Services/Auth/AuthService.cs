@@ -37,23 +37,82 @@ namespace CoffeeStoreApi.Services.Auth
             if (existUser != null)
                 return ResponseBuilder.Failure<RegisterDto>("Email already registered.", null);
 
-            var user = new ApplicationUser() { FullName = dto.FullName, UserName = dto.UserName, Email = dto.Email };
 
-            var result = await _userManager.CreateAsync(user, dto.Password);
-
-            if (!result.Succeeded)
+            var user = new ApplicationUser
             {
-                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                return ResponseBuilder.Failure<RegisterDto>(errors, null);
+                FullName = dto.FullName,
+                UserName = dto.UserName,
+                Email = dto.Email
+            };
+
+            // 1. Create User
+            
+
+
+            if (await _roleManager.RoleExistsAsync("USER"))
+            {
+                throw new Exception("Test 500 error");
+            }
+            var createResult = await _userManager.CreateAsync(user, dto.Password);
+            if (!createResult.Succeeded)
+            {
+                var errors = string.Join(", ",
+                    createResult.Errors.Select(e => e.Description));
+
+                return ResponseBuilder.Failure<RegisterDto>(
+                    errors,
+                    null
+                );
+
             }
 
-            if (!await _roleManager.RoleExistsAsync(dto.Role))
-            {
-                await _roleManager.CreateAsync(new IdentityRole(dto.Role));
-            }
-            await _userManager.AddToRoleAsync(user, dto.Role);
+           
 
-            return ResponseBuilder.Success("Operation Successful", dto);
+
+
+
+            if (!await _roleManager.RoleExistsAsync("USER"))
+                {
+                    var roleCreateResult = await _roleManager.CreateAsync(
+                        new IdentityRole("USER")
+                    );
+
+                    if (!roleCreateResult.Succeeded)
+                    {
+                        await _userManager.DeleteAsync(user);
+
+                        var errors = string.Join(", ",
+                            roleCreateResult.Errors.Select(e => e.Description));
+
+                        return ResponseBuilder.Failure<RegisterDto>(
+                            errors,
+                            null
+                        );
+                    }
+                }
+
+                // 3. Add user to USER role
+                var roleResult = await _userManager.AddToRoleAsync(user, "USER");
+
+                if (!roleResult.Succeeded)
+                {
+                    await _userManager.DeleteAsync(user);
+
+                    var errors = string.Join(", ",
+                        roleResult.Errors.Select(e => e.Description));
+
+                    return ResponseBuilder.Failure<RegisterDto>(
+                        errors,
+                        null
+                    );
+
+                }
+            
+           
+         
+
+
+                return ResponseBuilder.Success("Operation Successful", dto);
         }
         public async Task<Response<LoginResponseDto>> Login(LoginDto loginDto)
         {

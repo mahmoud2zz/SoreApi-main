@@ -1,18 +1,26 @@
 ﻿<Properties StartupConfiguration="{4560F4AF-F478-4599-9BDD-EF4C8CF8C291}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.CoffeeStoreApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeStoreApi/Services/Auth/AuthService.cs">
+    <Files>
+      <File FileName="CoffeeStoreApi/Program.cs" Line="190" Column="1" IsPinned="True" />
+      <File FileName="CoffeeStoreApi/Midllewares/ExceptionMiddleware.cs" Line="25" Column="33" IsPinned="True" />
+      <File FileName="CoffeeStoreApi/Services/Auth/AuthService.cs" Line="64" Column="14" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="CoffeeStoreApi" expanded="True">
-            <Node name="CoffeeStoreApi" expanded="True">
-              <Node name="Dtos" expanded="True">
-                <Node name="OrderDtos" expanded="True" />
-              </Node>
+          <Node name="CoffeeStoreApi">
+            <Node name="CoffeeStoreApi">
+              <Node name="Logs" expanded="True" />
+              <Node name="Midllewares" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Orders" expanded="True">
-                  <Node name="OrderService.cs" selected="True" />
+                <Node name="Auth" expanded="True">
+                  <Node name="AuthService.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -21,9 +29,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

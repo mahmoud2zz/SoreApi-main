@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Text;
 using CoffeeStoreApi.Authorization;
+using CoffeeStoreApi.Midllewares;
 using CoffeeStoreApi.Models;
 using CoffeeStoreApi.Repositories.Implementations;
 using CoffeeStoreApi.Repositories.Interfaces;
@@ -17,8 +18,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Stripe;
 
+using Serilog;
+
+
+
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File(
+        "Logs/app-.log",
+        rollingInterval: RollingInterval.Day
+    )
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Host.UseSerilog();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -167,7 +182,12 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowAngular");
 
-app.UseAuthentication(); // 
+app.UseMiddleware<ExceptionMiddleware>();
+
+
+app.UseAuthentication();
+app.UseMiddleware<RateLimitMiddleware>();
+// 
 app.UseAuthorization();
 
 app.MapControllers();
