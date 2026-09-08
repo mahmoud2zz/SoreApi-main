@@ -13,20 +13,18 @@ namespace CoffeeStoreApi.Services.Orders
 {
     public class OrderService : IOrederService
     {
-
         private readonly IOrderRepositroy _orderRepositroy;
-
         private readonly IProductRepository _productRepository;
-
         private IDeliveryInformationRepositroy _deliveryInformationRepositroy;
-
         private readonly IPaymentService _paymentService;
+        private readonly IPaymentRepository _paymentRepository;
 
-        public OrderService(IOrderRepositroy orderRepositroy,  IProductRepository productRepository, IDeliveryInformationRepositroy deliveryInformationRepositroy, IPaymentService paymentService)
+        public OrderService(IOrderRepositroy orderRepositroy,  IProductRepository productRepository, IDeliveryInformationRepositroy deliveryInformationRepositroy, IPaymentService paymentService, IPaymentRepository paymentRepository)
         {
             _orderRepositroy = orderRepositroy;
             _productRepository = productRepository;
             _deliveryInformationRepositroy = deliveryInformationRepositroy;
+            _paymentRepository = paymentRepository;
             _paymentService = paymentService;
 
 
@@ -67,14 +65,8 @@ namespace CoffeeStoreApi.Services.Orders
 
 
             await _orderRepositroy.CreateOrder(order);
-            var paymentIntentId = await _paymentService.CreatePaymentIntent(order);
-            var payment = new Payment
-            {
-                OrderId = order.Id,
-                Amount = TotalAmount,
-                PaymentIntentId = paymentIntentId,
-                Status = PaymentStatus.Pending
-            };
+
+          
 
             DeliveryInformation deliveryInformation = new DeliveryInformation
             {

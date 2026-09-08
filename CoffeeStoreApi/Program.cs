@@ -160,7 +160,8 @@ if (app.Environment.IsDevelopment())
 
 
 
-StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+StripeConfiguration.ApiKey =
+    builder.Configuration["Stripe:SecretKey"];
 
 app.UseHttpsRedirection();
 

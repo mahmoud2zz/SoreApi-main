@@ -51,6 +51,7 @@
     <None Remove="Services\Files\" />
     <None Remove="Dtos\DeliveryInformationDtos\" />
     <None Remove="Services\Payments\" />
+    <None Remove="Dtos\PaymentDtos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -84,5 +85,6 @@
     <Folder Include="Services\Files\" />
     <Folder Include="Dtos\DeliveryInformationDtos\" />
     <Folder Include="Services\Payments\" />
+    <Folder Include="Dtos\PaymentDtos\" />
   </ItemGroup>
 </Project>

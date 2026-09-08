@@ -1,6 +1,7 @@
 ﻿using CoffeeStoreApi.Domain;
 using CoffeeStoreApi.Models;
 using CoffeeStoreApi.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeStoreApi.Repositories.Implementations
 {
@@ -17,6 +18,17 @@ namespace CoffeeStoreApi.Repositories.Implementations
         {
             await _dbContext.Payments.AddAsync(payment);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Payment?> GetPayment(string paymentIntent)
+        {
+         return await  _dbContext.Payments.FirstOrDefaultAsync(p => p.PaymentIntentId == paymentIntent);
+        }
+
+        public async Task UpdatePayment(Payment payment)
+        {
+            _dbContext.Payments.Update(payment);
+             await _dbContext.SaveChangesAsync();
         }
     }
 }

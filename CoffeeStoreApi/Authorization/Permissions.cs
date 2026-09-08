@@ -19,6 +19,10 @@ namespace CoffeeStoreApi.Authorization
         public const string UpdateOrder = "order:update";
         public const string RemoveOrder = "order:remove";
 
+        //  Payment Permission
+
+        public const string CreatePayment = "payment:create";
+
 
         public static readonly string[] All =
         {
@@ -33,7 +37,10 @@ namespace CoffeeStoreApi.Authorization
         CreateOrder,
         GetOrders,
         UpdateOrder,
-        RemoveOrder
+        RemoveOrder,
+        CreatePayment
+
+
     };
     }
 }

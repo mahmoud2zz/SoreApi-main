@@ -27,7 +27,8 @@ namespace CoffeeStoreApi.Seeding
             {
             Permissions.GetProducts,
             Permissions.GetProductById,
-            Permissions.CreateOrder
+            Permissions.CreateOrder,
+            Permissions.CreatePayment
         };
 
             await AddPermissionsToRoleAsync(

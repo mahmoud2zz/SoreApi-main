@@ -1,7 +1,6 @@
 ﻿using CoffeeStoreApi.Common;
 using CoffeeStoreApi.Dtos;
 using CoffeeStoreApi.Enums;
-using CoffeeStoreApi.Models;
 
 namespace CoffeeStoreApi.Services.Orders
 {

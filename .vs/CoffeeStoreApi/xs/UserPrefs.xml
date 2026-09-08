@@ -1,28 +1,20 @@
 ﻿<Properties StartupConfiguration="{4560F4AF-F478-4599-9BDD-EF4C8CF8C291}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CoffeeStoreApi/Services/Orders/OrderService.cs">
-    <Files>
-      <File FileName="CoffeeStoreApi/appsettings.json" Line="1" Column="1" />
-      <File FileName="CoffeeStoreApi/Program.cs" Line="103" Column="1" />
-      <File FileName="CoffeeStoreApi/Services/Orders/OrderService.cs" Line="23" Column="6" />
-    </Files>
+  <MonoDevelop.Ide.ItemProperties.CoffeeStoreApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CoffeeStoreApi" expanded="True">
             <Node name="CoffeeStoreApi" expanded="True">
-              <Node name="Dependencies" expanded="True" />
+              <Node name="Dtos" expanded="True">
+                <Node name="OrderDtos" expanded="True" />
+              </Node>
               <Node name="Services" expanded="True">
                 <Node name="Orders" expanded="True">
                   <Node name="OrderService.cs" selected="True" />
                 </Node>
-                <Node name="Payments" expanded="True" />
               </Node>
-              <Node name="Settings" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -30,5 +22,8 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.CoffeeStoreApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
 </Properties>
